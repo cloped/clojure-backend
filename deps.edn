@@ -1,0 +1,22 @@
+{:paths ["src" "resources"]
+ :deps {org.clojure/clojure {:mvn/version "1.11.1"}
+        io.pedestal/pedestal.service {:mvn/version "0.5.7"}
+        io.pedestal/pedestal.route   {:mvn/version "0.5.7"}
+        io.pedestal/pedestal.jetty   {:mvn/version "0.5.7"}
+        com.stuartsierra/component   {:mvn/version "0.4.0"}
+        org.slf4j/slf4j-simple       {:mvn/version "1.7.28"}
+        com.stuartsierra/component.repl {:mvn/version "0.2.0"}}
+ :aliases
+ {:dev {:extra-paths ["dev"]}
+  :run-m {:main-opts ["-m" "clojure-backend.clojure-backend"]}
+  :run-x {:ns-default clojure-backend.clojure-backend
+          :exec-fn greet
+          :exec-args {:name "Clojure"}}
+  :build {:deps {io.github.clojure/tools.build
+                 {:git/tag "v0.9.2" :git/sha "fe6b140"}
+                 com.stuartsierra/component {:mvn/version "1.1.0"}}
+          :ns-default build}
+  :test {:extra-paths ["test"]
+         :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
+                      io.github.cognitect-labs/test-runner
+                      {:git/tag "v0.5.1" :git/sha "dfb30dd"}}}}}
